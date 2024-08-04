@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .success-message {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #dff0d8;
+            border: 1px solid #b2dba1;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .success-message h2 {
+            color: #3c763d;
+        }
+        .success-message p {
+            margin: 10px 0;
+        }
+        .success-message a {
+            color: #155724;
+            text-decoration: none;
+        }
+        .success-message a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-message">
+        <h2>Registration Successful!</h2>
+        <p>Thank you for registering.</p>
+        <!-- Display the registration ID -->
+        <p>Registration ID: <span th:text="${farmerId}"></span></p>
+        <!-- Link to the dashboard page -->
+        <p>Go to <a href="/FarmerPortal">FarmerPortal</a></p>
+    </div>
+</body>
+</html>

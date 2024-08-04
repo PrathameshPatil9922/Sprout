@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-size: 24px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .container {
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .drawer {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            color: white;
+        }
+
+        .drawer a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #ffffff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .drawer a:hover {
+            background-color: #454d55;
+        }
+
+        .drawer .close-btn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .details-container {
+            padding: 20px;
+        }
+
+        .details {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .details h2 {
+            margin-top: 0;
+            color: #343a40;
+        }
+
+        .details p {
+            color: #6c757d;
+        }
+
+        .details ul {
+            padding-left: 20px;
+            margin-top: 0;
+            color: #6c757d;
+        }
+
+        .details li {
+            list-style-type: none;
+        }
+
+        .driver {
+            color: #007bff;
+        }
+
+        .tractor {
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="menu-btn" onclick="openDrawer()">&#9776;</span>
+        <h2 class="logo">Owner Dashboard</h2>
+        <span class="float-right" id="dateTime"></span>
+    </div>
+
+    <div class="drawer" id="myDrawer">
+        <a href="#close" class="close-btn" onclick="closeDrawer()">&times;</a>
+        <a href="#addOwnerForm" th:href="@{/owners/add}">Add Owner</a>
+        <a href="#updateOwnerForm" th:href="@{/owners/update}">Update Owner</a>
+    </div>
+
+    <div class="container">
+        <h3>Owners List</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Village</th>
+                    <th>Contact Info</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="owner : ${owners}">
+                    <td th:text="${owner.name}"></td>
+                    <td th:text="${owner.villageName}"></td>
+                    <td th:text="${owner.contactInfo}"></td>
+                    <td>
+                        <form th:action="@{/owners/details}" method="get">
+                            <input type="hidden" name="ownerId" th:value="${owner.ownerId}">
+                            <button type="submit" class="btn btn-primary">View</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function openDrawer() {
+            document.getElementById("myDrawer").style.width = "250px";
+        }
+
+        function closeDrawer() {
+            document.getElementById("myDrawer").style.width = "0";
+        }
+
+        function updateTime() {
+            var now = new Date();
+            var dateTimeStr = now.toLocaleString();
+            document.getElementById("dateTime").innerText = dateTimeStr;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Display by Sector</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            color: #343a40;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .sector-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sector-card h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .village-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .village-list li {
+            margin-bottom: 5px;
+            color: #007bff; /* Change color to blue */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Villages by Sector</h3>
+        <div th:each="sector : ${sectors}" class="sector-card">
+            <h4 th:text="${sector.name}"></h4>
+            <ul class="village-list">
+                <li th:each="village : ${sector.villages}" th:text="${village.name}"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

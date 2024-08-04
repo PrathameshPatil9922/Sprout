@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugar Factory Dashboard</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        .card { transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-5px); }
+        .card-department { background-color: #F59E0B; border-radius: 1rem; }
+        .header-bar { background-color: #F0E68C; }
+        .header-text { color: #2E3A23; }
+
+        .bg-skin { background-color: #F5F5DC; }
+
+        .btn {
+            background-color: #F59E0B;
+            color: #FFFFFF;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #FFC107;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+   
+    <header class="header-bar text-gray-800 py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="/" class="text-xl font-bold header-text">Home</a>
+            <h1 class="text-2xl font-bold header-text">Sugar Factory Department Dashboard</h1>
+            <div class="text-sm">
+                <span id="current-date"></span> | <span id="current-time"></span>
+            </div>
+        </div>
+    </header>
+
+   
+    <main class="container mx-auto py-6 bg-skin">
+        <section class="my-6 px-4">
+            <h2 class="text-xl font-semibold mb-4">Analytics</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                
+                <div class="card bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">Sugar Rate</h3>
+                    <p class="text-sm">Current price per kg</p>
+                    <p class="text-3xl font-bold text-gray-800">₹50</p>
+                </div>
+               
+                <div class="card bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">Sugarcane Rate</h3>
+                    <p class="text-sm">Price per ton</p>
+                    <p class="text-3xl font-bold text-gray-800">₹3200</p>
+                </div>
+            </div>
+        </section>
+
+       
+        <section class="my-6 px-4">
+            <h2 class="text-xl font-semibold mb-4">Sugar Factory Departments</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <a href="/schedule/today-crushings" class="card card-department">
+                    <div class="bg-red-500 p-6 rounded-lg shadow-md flex flex-col items-center">
+                        <h2 class="text-lg font-semibold text-white">Crushing</h2>
+                        <button class="btn mt-4">View Details</button>
+                    </div>
+                </a>
+
+                <a href="/caneyard" class="card card-department">
+                    <div class="bg-green-500 p-6 rounded-lg shadow-md flex flex-col items-center">
+                        <h2 class="text-lg font-semibold text-white">Caneyard</h2>
+                        <button class="btn mt-4">View Details</button>
+                    </div>
+                </a>
+
+                <a href="/electrical" class="card card-department">
+                    <div class="bg-blue-500 p-6 rounded-lg shadow-md flex flex-col items-center">
+                        <h2 class="text-lg font-semibold text-white">Electrical</h2>
+                        <button class="btn mt-4">View Details</button>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-4 text-center">
+        <div class="container mx-auto">
+            <p>&copy; 2024 SPROUT. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function getCurrentDateTime() {
+            const currentDate = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            const currentTime = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+            document.getElementById('current-date').textContent = "Date: " + currentDate;
+            document.getElementById('current-time').textContent = "Time: " + currentTime;
+        }
+        setInterval(getCurrentDateTime, 1000);
+        getCurrentDateTime();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Farmer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #f5c6cb;
+        }
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <h2>Register Farmer</h2>
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <div th:if="${successMessage}" class="success-message">
+        <p th:text="${successMessage}"></p>
+    </div>
+
+    <form action="/register_farmer" th:action="@{/register_farmer}" th:object="${registration}" method="post">
+        <!-- User fields -->
+        <label>User Name:</label>
+        <input type="text" id="username" name="user.username" required/><br/>
+        
+        <label>Password:</label>
+        <input type="password" id="password" name="user.password" required/><br/>
+
+        <label>Name:</label>
+        <input type="text" id="name" name="user.name" required/><br/>
+        
+        <label>Email:</label>
+        <input type="email" id="email" name="user.email" required/><br/>
+        
+        <!-- Farmer fields -->
+        <label>Field of Cane:</label>
+        <input type="text" id="fieldOfCane" name="farmer.fieldOfCane" required/><br/>
+        
+        <label>Location:</label>
+        <input type="text" id="location" name="farmer.location" required/><br/>
+
+        <label>Phone:</label>
+        <input type="text" id="phone" name="farmer.phone" required/><br/>
+        
+        <input type="submit" value="Register"/>
+    </form>
+</body>
+</html>

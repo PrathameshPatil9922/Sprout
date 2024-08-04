@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #343a40;
+        }
+
+        .details {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .details h2 {
+            color: #343a40;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .details p {
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .associated-items {
+            margin-top: 20px;
+        }
+
+        .associated-items h4 {
+            margin-top: 0;
+            color: #343a40;
+        }
+
+        .associated-items ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .associated-items li {
+            margin-bottom: 5px;
+            color: #6c757d;
+        }
+
+        .driver {
+            color: #007bff;
+        }
+
+        .tractor {
+            color: #28a745;
+        }
+
+        .add-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-button {
+            background-color: #6c757d;
+            color: #fff;
+            border: none;
+            padding: 8px 12px; /* Adjusted padding for the back button */
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Owner Dashboard</h3>
+        <div class="details">
+            <h2 th:text="${owner.name}"></h2>
+            <p th:text="'Village: ' + ${owner.villageName}"></p>
+            <p th:text="'Contact Info: ' + ${owner.contactInfo}"></p>
+            <div class="associated-items">
+                <h4>Associated Drivers:</h4>
+                <ul>
+                    <li th:each="driver : ${owner.drivers}" th:text="${driver.name}" class="driver"></li>
+                </ul>
+                <a class="add-button" th:href="@{/drivers/add(ownerId=${owner.ownerId})}">Add Driver</a>
+            </div>
+            <div class="associated-items">
+                <h4>Associated Tractors:</h4>
+                <ul>
+                    <li th:each="tractor : ${owner.tractors}" class="tractor">
+                        <span th:text="${tractor.name}"></span> - 
+                        <span th:text="${tractor.registrationNumber}"></span>
+                    </li>
+                </ul>
+                <a class="add-button" th:href="@{/tractors/add(ownerId=${owner.ownerId})}">Add Tractor</a>
+            </div>
+            <a class="back-button" href="javascript:history.go(-1)">Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

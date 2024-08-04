@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Portal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: black;
+        }
+
+        header {
+            background-color: rgba(40, 167, 69, 0.8); 
+            color: black; 
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            position: relative; 
+        }
+
+        .datetime {
+            position: absolute;
+            top: 50%;
+            right: 100px;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: black; 
+        }
+
+        .back-link,
+        .logout-link {
+            color: black; 
+            text-decoration: none;
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .back-link {
+            left: 20px;
+        }
+
+        .logout-link {
+            right: 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .content-box {
+            flex: 0 1 calc(30% - 20px); 
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+            background-color: #ffe0bd; 
+        }
+
+        .content-title {
+            color: #28a745;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .content-text {
+            font-size: 16px;
+        }
+
+        .btn-custom {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: #343a40; /* Dark gray background */
+            color: white; /* White text */
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="back-link">Back</a>
+        <h1>Welcome to the Farmer Portal</h1>
+        <div class="datetime" id="currentDateTime"></div>
+        <a href="/logout" class="logout-link">Logout</a>
+    </header>
+
+    <main>
+        <div class="content-container">
+            <div class="content-box">
+				<a href="/todays-bookings/book">
+                <h2 class="content-title">Book Your Cane</h2>
+                <p class="content-text">Click below to book cane for your farming needs.</p>
+                <button class="btn-custom">Book Now</button>
+				</a>
+            </div>
+            
+            <div class="content-box">
+				<a href="/analytics">
+                <h2 class="content-title">Analytics</h2>
+                <p class="content-text">View detailed analytics for your farming operations.</p>
+                <button class="btn-custom">View Analytics</button>
+				</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Farmer Portal. All rights reserved.</p>
+        <p>Contact us: farmerportal@example.com | Phone: +1 234 567 890</p>
+    </footer>
+
+    <!-- Link Bootstrap JS (optional) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for displaying current date and time -->
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const date = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            const time = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+            document.getElementById('currentDateTime').innerText = `${date} | ${time}`;
+        }
+
+        updateTime(); // Initial call
+        setInterval(updateTime, 1000); // Update every second
+    </script>
+</body>
+</html>

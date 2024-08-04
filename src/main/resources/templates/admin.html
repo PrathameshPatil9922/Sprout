@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!--CSS -->
+    <style>
+        .header-bar { background-color: rgba(0, 0, 0, 0.8); }
+        .footer-bar { background-color: rgba(0, 0, 0, 0.8); }
+        .container-bg { background-color: #FDF2E9; }
+        .card { transition: all 0.3s ease-in-out; }
+        .card:hover { transform: translateY(-5px); }
+        .card-color-1 { background-color: #FDE68A; }
+        .card-color-2 { background-color: #A7F3D0; }
+        .card-color-3 { background-color: #A5B4FC; }
+        .card-color-4 { background-color: #FECACA; }
+        .card-color-5 { background-color: #FBCFE8; }
+        .btn {
+            background-color: #4B5563;
+            color: #FFFFFF;
+            border: 2px solid #4B5563;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+        }
+        .btn:hover {
+            background-color: #6B7280;
+            border-color: #6B7280;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <header class="header-bar text-white py-4">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="/" class="text-xl font-semibold">Back</a>
+            <h1 class="text-2xl font-bold">Admin Dashboard</h1>
+            <div class="text-sm">
+                <span id="current-date"></span> | <span id="current-time"></span>
+            </div>
+            <a href="/logout" class="text-xl font-semibold">Logout</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-6">
+        <div class="mb-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Welcome, Admin!</h2>
+            <p class="text-lg text-gray-600">You are logged in as factory administrator. Here's a quick overview of the factory operations.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            <a href="/owners/ownerdash" class="card card-color-1 rounded-lg shadow-md flex flex-col items-center justify-center p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Owners Management</h2>
+                <button class="btn">Manage</button>
+            </a>
+            <a href="/sector/villages" class="card card-color-2 rounded-lg shadow-md flex flex-col items-center justify-center p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Villages by Sector</h2>
+                <button class="btn">Manage</button>
+            </a>
+            <a href="/admin/add_achievements" class="card card-color-3 rounded-lg shadow-md flex flex-col items-center justify-center p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Add Achievement</h2>
+                <button class="btn">Add</button>
+            </a>
+            <a href="/admin/admindash/events" class="card card-color-4 rounded-lg shadow-md flex flex-col items-center justify-center p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Add Event</h2>
+                <button class="btn">Add</button>
+            </a>
+          
+            <a href="/admin/admindash/addUser" class="card card-color-5 rounded-lg shadow-md flex flex-col items-center justify-center p-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Add Department Manager</h2>
+                <button class="btn">Add</button>
+            </a>
+        </div>
+    </main>
+
+  
+    <footer class="footer-bar text-gray-300 py-4">
+        <div class="container mx-auto text-center">
+            
+            <p>Contact us at: example@example.com</p>
+         
+            <p>123 Sugar Factory Road, Sugarland</p>
+            
+            <p>&copy; 2024 SPROUT. All rights reserved.</p>
+        </div>
+    </footer>
+
+  
+    <script>
+        
+        function getCurrentDateTime() {
+            const currentDate = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            const currentTime = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+            document.getElementById('current-date').textContent = currentDate;
+            document.getElementById('current-time').textContent = currentTime;
+        }
+
+        
+        setInterval(getCurrentDateTime, 1000);
+        getCurrentDateTime();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPROUT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+   
+    <div th:include="fragments/navbar :: navbar"></div>
+    
+   
+    <section class="container mx-auto flex flex-col md:flex-row py-12 px-4 md:px-0" style="background-image: url('Images/bg.jpg');">
+        <!-- Left Content: Information about SPROUT -->
+        <div class="md:w-1/2 md:pr-8 px-4 py-4">
+            <h1 class="text-4xl font-bold mb-4 text-black mt-16">Welcome to SPROUT</h1>
+            <p class="text-lg mb-6 text-dark-green">SPROUT is revolutionizing the sugarcane industry through innovative solutions and sustainable practices. Our mission is to empower sugarcane farmers and industry stakeholders with knowledge, tools, and resources to enhance productivity, profitability, and environmental stewardship.</p>
+            <div class="flex">
+                <a href="/dashboard" class="inline-block bg-green-600 hover:bg-green-700 text-white py-4 px-4 rounded-md mr-2">Learn More</a>
+            </div>
+        </div>
+        <!-- Right Content: Image -->
+        <div class="md:w-1/2 mt-8 md:mt-16 md:pl-8 flex justify-end px-4 py-4">
+            <img src="https://source.unsplash.com/600x400/?sugarcane,factory" alt="SPROUT Image" class="rounded-lg shadow-xl">
+        </div>
+    </section>
+
+    
+    <section class="container mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 px-4 py-4 mt-0" style="background-image: url('Images/bg.jpg');">
+        <img src="https://source.unsplash.com/300x200/?sugarcane,field" alt="Image 1" class="rounded-lg shadow-xl">
+        <img src="https://source.unsplash.com/300x200/?sugarcane,farming" alt="Image 2" class="rounded-lg shadow-xl">
+        <img src="https://source.unsplash.com/300x200/?sugarcane,harvest" alt="Image 3" class="rounded-lg shadow-xl">
+        <img src="https://source.unsplash.com/300x200/?sugarcane,agriculture" alt="Image 4" class="rounded-lg shadow-xl">
+        <img src="https://source.unsplash.com/300x200/?sugarcane,plantation" alt="Image 5" class="rounded-lg shadow-xl">
+        <img src="https://source.unsplash.com/300x200/?sugarcane,green" alt="Image 6" class="rounded-lg shadow-xl">
+    </section>
+
+    
+    <div th:include="fragments/footer :: footer"></div>
+</body>
+</html>

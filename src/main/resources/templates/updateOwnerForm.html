@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Owner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your custom CSS here if needed -->
+</head>
+<body>
+    <div class="container">
+        <h3>Update Owner</h3>
+        <form th:action="@{/owners/update}" method="post">
+			        <div class="form-group">
+			            <label for="ownerId">Owner ID:</label>
+			            <input type="text" class="form-control" id="ownerId" name="ownerId" required>
+			        </div>
+			        <div class="form-group">
+			            <label for="name">Name:</label>
+			            <input type="text" class="form-control" id="name" name="name" required>
+			        </div>
+			        <div class="form-group">
+			            <label for="villageName">Village Name:</label>
+			            <input type="text" class="form-control" id="villageName" name="villageName" required>
+			        </div>
+			        <div class="form-group">
+			            <label for="contactInfo">Contact Info:</label>
+			            <input type="text" class="form-control" id="contactInfo" name="contactInfo" required>
+			        </div>
+			        <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</body>
+</html>
